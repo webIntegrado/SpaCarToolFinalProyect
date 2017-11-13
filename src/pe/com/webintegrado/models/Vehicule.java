@@ -10,18 +10,18 @@ public class Vehicule {
     private String model;
     private Date yearBought;
     private String palte;
-    private Appointment appointment;
+    private User user;
 
     public Vehicule() {
     }
 
-    public Vehicule(int id, String brand, String model, Date yearBought, String palte, Appointment appointment) {
+    public Vehicule(int id, String brand, String model, Date yearBought, String palte, User user) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.yearBought = yearBought;
         this.palte = palte;
-        this.appointment = appointment;
+        this.user = user;
     }
 
     public int getId() {
@@ -69,16 +69,16 @@ public class Vehicule {
         return this;
     }
 
-    public Appointment getAppointment() {
-        return appointment;
+    public User getUser() {
+        return user;
     }
 
-    public Vehicule setAppointment(Appointment appointment) {
-        this.appointment = appointment;
+    public Vehicule setUser(User user) {
+        this.user = user;
         return this;
     }
 
-    public static Vehicule from(ResultSet rs,AppointmentsEntity appointmentsEntity,UsersEntity usersEntity,AutoShopsEntity autoShopsEntity){
+    public static Vehicule from(ResultSet rs,UsersEntity usersEntity){
         Vehicule vehicule = new Vehicule();
         try {
             return vehicule.setId(rs.getInt("id"))
@@ -86,10 +86,7 @@ public class Vehicule {
                     .setModel(rs.getString("model"))
                     .setYearBought(rs.getDate("year_bought"))
                     .setPalte(rs.getString("plate"))
-                    .setAppointment(appointmentsEntity.findById(
-                            rs.getInt("appointment_id"),
-                            usersEntity,
-                            autoShopsEntity));
+                    .setUser(usersEntity.findById(rs.getInt("user_id")));
         }catch (SQLException e) {
             e.printStackTrace();
         }

@@ -45,6 +45,12 @@ public class AutoShopsEntity extends BaseEntity {
                 String.format("WHERE name = '%s'", name)).get(0);
     }
 
+    public List<AutoShop> findAllByType(String type){
+        return findByCriteria(
+                String.format("WHERE type = '%s'",type)
+        );
+    }
+
     public List<AutoShop> findAll() {
         return findByCriteria("");
     }

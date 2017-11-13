@@ -17,12 +17,12 @@ public class VehiculesEntity extends BaseEntity {
         super(connection, tableName);
     }
 
-    public Vehicule findById(String id, AppointmentsEntity appointmentsEntity,UsersEntity usersEntity, AutoShopsEntity autoShopsEntity) {
+    public Vehicule findById(int id,UsersEntity usersEntity ) {
         return findByCriteria(
-                String.format("WHERE country_id = %d", id), appointmentsEntity,usersEntity,autoShopsEntity).get(0);
+                String.format("WHERE country_id = %d", id),usersEntity).get(0);
     }
 
-    public List<Vehicule> findByCriteria(String criteria, AppointmentsEntity appointmentsEntity,UsersEntity usersEntity, AutoShopsEntity autoShopsEntity) {
+    public List<Vehicule> findByCriteria(String criteria, UsersEntity usersEntity) {
         try {
             ResultSet rs = getConnection()
                     .createStatement()
@@ -31,7 +31,7 @@ public class VehiculesEntity extends BaseEntity {
                                     .concat(criteria));
             List<Vehicule> vehicules = new ArrayList<>();
             while(rs.next())
-                vehicules.add(Vehicule.from(rs,appointmentsEntity,usersEntity,autoShopsEntity));
+                vehicules.add(Vehicule.from(rs,usersEntity));
 
             return vehicules;
         } catch (SQLException e) {
@@ -41,29 +41,35 @@ public class VehiculesEntity extends BaseEntity {
 
     }
 
-    public Vehicule findByPlate(String plate, AppointmentsEntity appointmentsEntity,UsersEntity usersEntity, AutoShopsEntity autoShopsEntity) {
+    public Vehicule findByPlate(String plate,UsersEntity usersEntity ) {
         return findByCriteria(
-                String.format("WHERE plate = '%s'", plate), appointmentsEntity,usersEntity,autoShopsEntity).get(0);
+                String.format("WHERE plate = '%s'", plate),usersEntity).get(0);
     }
 
-    public List<Vehicule> findAll(AppointmentsEntity appointmentsEntity,UsersEntity usersEntity, AutoShopsEntity autoShopsEntity) {
-        return findByCriteria("", appointmentsEntity,usersEntity,autoShopsEntity);
+    public List<Vehicule> findAll(UsersEntity usersEntity ) {
+        return findByCriteria("",usersEntity);
+    }
+
+    public List<Vehicule> findAllByUserId(int userId,UsersEntity usersEntity){
+        return findByCriteria(
+                String.format("WHERE user_id = %d",userId),usersEntity
+        );
     }
 
     public boolean create(Vehicule vehicule) {
         return executeUpdate(String.format(
                 "INSERT INTO %s(id, brand, model,year_bought,plate,appointment_id) VALUES(%d, '%s', '%s', "+vehicule.getYearBought()+", '%s', %d)",
-                getTableName(), vehicule.getId(), vehicule.getBrand(), vehicule.getModel(),vehicule.getPalte(),vehicule.getAppointment().getId()));
+                getTableName(), vehicule.getId(), vehicule.getBrand(), vehicule.getModel(),vehicule.getPalte(),vehicule.getUser().getId()));
     }
 
-    public boolean create(int id, String brand, String model, Date yearBought, String plate, Appointment appointment) {
+    public boolean create(int id, String brand, String model, Date yearBought, String plate, User user) {
         return create(new Vehicule(
                 id,
                 brand,
                 model,
                 yearBought,
                 plate,
-                appointment
+                user
         ));
     }
 
