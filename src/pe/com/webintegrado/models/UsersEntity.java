@@ -25,7 +25,13 @@ public class UsersEntity extends BaseEntity {
 
     public User findByLastName(String lastName){
         return findByCriteria(
-                String.format("WHERE last_name = %s",lastName)
+                String.format("WHERE last_name = '%s'",lastName)
+        ).get(0);
+    }
+
+    public User findByEmail(String email){
+        return findByCriteria(
+                String.format("WHERE email = '%s'",email)
         ).get(0);
     }
 

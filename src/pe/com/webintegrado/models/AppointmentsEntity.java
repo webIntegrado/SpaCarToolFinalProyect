@@ -25,6 +25,13 @@ public class AppointmentsEntity extends BaseEntity {
                 String.format("WHERE id = %d", id), usersEntity,autoShopsEntity).get(0);
     }
 
+    public List<Appointment> findAllByUserId(int userId,
+                                UsersEntity usersEntity,
+                                AutoShopsEntity autoShopsEntity) {
+        return findByCriteria(
+                String.format("WHERE user_id = %d", userId), usersEntity,autoShopsEntity);
+    }
+
     public List<Appointment> findByCriteria(String criteria,
                                             UsersEntity usersEntity,
                                             AutoShopsEntity autoShopsEntity) {
@@ -70,6 +77,18 @@ public class AppointmentsEntity extends BaseEntity {
                 dateDelivery,
                 user,
                 autoShop));
+    }
+
+    public boolean create(int id,
+                          String description,
+                          Date dateCreated,
+                          Date dateDelivery,
+                          int autoShopId,
+                          int userId){
+        return executeUpdate(String.format(
+                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', "+dateCreated+", "+dateDelivery+", %d, %d)",
+                getTableName(), id, description, autoShopId,userId));
+
     }
 
 }

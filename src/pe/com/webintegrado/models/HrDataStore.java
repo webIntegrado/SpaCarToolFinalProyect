@@ -1,6 +1,8 @@
 package pe.com.webintegrado.models;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
+import java.util.Date;
 import java.util.List;
 
 public class HrDataStore {
@@ -23,6 +25,10 @@ public class HrDataStore {
             usersEntity.setConnection(connection);
         }
         return usersEntity;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
     }
 
     private AutoShopsEntity getAutoShopsEntity(){
@@ -49,38 +55,114 @@ public class HrDataStore {
         return vehiculesEntity;
     }
 
+    /**
+     * findUserById: get user info by id
+     *
+     * @param id: user id
+     * @return user info
+     */
     public User findUserById(int id){
         if(connection == null) return null;
         return getUsersEntity().findById(id);
     }
 
+    /**
+     * RegisterUser: register new user
+     *
+     * @param firstName
+     * @param lastName
+     * @param phone
+     * @param address
+     * @param email
+     * @return true if success or false if failure
+     */
+    public boolean registerUser(String firstName,
+                                String lastName,
+                                int phone,
+                                String address,
+                                String email){
+        if(connection == null) return false;
+        User newUser = getUsersEntity().create(firstName,lastName,phone,address,email);
+        return newUser != null;
+    }
+
+    /**
+     * loginUser: login the user by email
+     *
+     * @param email
+     * @return id from logged user
+     */
+    public int loginUser(String email){
+        if(connection == null) return 0;
+        int userId = getUsersEntity().findByEmail(email).getId();
+        if (userId != 0){
+            return userId;
+        }else {
+            return 0;
+        }
+    }
+
+    /**
+     * findAutoShopById: get auto shop by id
+     *
+     * @param id
+     * @return auto shop object
+     */
     public AutoShop findAutoShopById(int id){
         if(connection == null) return null ;
         return getAutoShopsEntity().findById(id);
     }
 
-    public Appointment findAppointmentById(int id){
-        if(connection == null) return null ;
-        return getAppointmentsEntity().findById(id,getUsersEntity(),getAutoShopsEntity());
-    }
-
-    public Vehicule findVehiculeById(int id){
-        if(connection == null) return null ;
-        return getVehiculesEntity().findById(id,getUsersEntity());
-    }
-
+    /**
+     * findAllAutoShopsByType: filter auto shops by type
+     *
+     * @param type
+     * @return list of auto shops
+     */
     public List<AutoShop> findAllAutoShopsByType(String type){
         if(connection == null) return null ;
         return getAutoShopsEntity().findAllByType(type);
     }
 
-    public List<AutoShop> findAllAutoShops(){
-        if(connection == null) return null ;
-        return getAutoShopsEntity().findAll();
-    }
-
+    /**
+     * findAllVehiculesByUserId
+     *
+     * @param userId
+     * @return list of vehicules from a user
+     */
     public List<Vehicule> findAllVehiculesByUserId(int userId){
         if(connection == null) return null ;
         return getVehiculesEntity().findAllByUserId(userId,getUsersEntity());
+    }
+
+    /**
+     * createAppointment
+     *
+     * @param id
+     * @param description
+     * @param dateCreated
+     * @param datedelivery
+     * @param userId
+     * @param autoShopId
+     * @return true if success or false if failure
+     */
+    public boolean createAppointment(int id,
+                                     String description,
+                                     Date dateCreated,
+                                     Date datedelivery,
+                                     int userId,
+                                     int autoShopId) {
+        return connection != null && getAppointmentsEntity().create(id, description, dateCreated, datedelivery, autoShopId, userId);
+    }
+
+    /**
+     * findAllAppointmentByUserId
+     *
+     * @param userId
+     * @return list of appointments of user
+     */
+    public List<Appointment> findAllAppointmentByUserId (int userId){
+        if(connection == null) return null ;
+        return getAppointmentsEntity().findAllByUserId(userId,getUsersEntity(),getAutoShopsEntity());
     }
 }
