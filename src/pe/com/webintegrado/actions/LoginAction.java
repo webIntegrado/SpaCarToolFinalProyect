@@ -27,12 +27,13 @@ public class LoginAction extends ActionSupport{
     }
 
     public String execute() throws Exception{
-        int userId = service.loginUser(getUserEmail());
-        this.userId = userId;
-        if(userId != 0){
-            return SUCCESS;
-        }else {
-            return INPUT;
-        }
+//        int userId = service.loginUser(getUserEmail());
+//        this.userId = userId;
+//        if(userId != 0){
+//            return SUCCESS;
+//        }else {
+//            return INPUT;
+//        }
+        return SUCCESS;
     }
 }
