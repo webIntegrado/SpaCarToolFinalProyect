@@ -4,11 +4,18 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
 public class HrService {
+    private String url = "jdbc:mysql://localhost:3306/";
+    private String dbName = "spa_car_tool";
+    private String driverClassName = "com.mysql.jdbc.Driver";
+    private String userName = "root";
+    private String password = "123456";
+
     private Connection connection;
     private HrDataStore dataStore;
 
@@ -25,6 +32,18 @@ public class HrService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
+//        try {
+//            Class.forName(driverClassName);
+//            dataStore = new HrDataStore();
+//            connection = DriverManager.getConnection(
+//                    url+dbName,userName,password
+//            );
+//            dataStore.setConnection(connection);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     public Connection getConnection() {

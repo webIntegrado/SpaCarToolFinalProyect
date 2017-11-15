@@ -5,6 +5,12 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+    <h2>login</h2>
+    <s:form action="loginUser" method="POST">
+      <s:label for="email" value="User Email"/>
+      <s:textfield id="email" name="userEmail"/>
+      <s:submit value="Login User"/>
+    </s:form>
+    <a href="register_screen.jsp">Sing Up</a>
   </body>
 </html>

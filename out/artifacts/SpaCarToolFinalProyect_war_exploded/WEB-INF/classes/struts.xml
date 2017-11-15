@@ -5,4 +5,13 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <package name="default" extends="struts-default">
+        <action name="index">
+            <result>index.jsp</result>
+        </action>
+        <action name="loginUser" class="pe.com.webintegrado.actions.LoginAction">
+            <result name="success">my_profile_screen.jsp</result>
+            <result name="input">index.jsp</result>
+        </action>
+    </package>
 </struts>

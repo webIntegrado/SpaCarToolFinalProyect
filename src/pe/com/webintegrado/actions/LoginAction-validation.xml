@@ -1,0 +1,12 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+    <field name="userEmail">
+        <field-validator type="requiredstring">
+            <message>Debes ingresar email</message>
+        </field-validator>
+        <field-validator type="email">
+            <message>email ingresado no es válido</message>
+        </field-validator>
+    </field>
+</validators>

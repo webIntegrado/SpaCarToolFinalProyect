@@ -27,9 +27,9 @@ public class AutoShopsController extends javax.servlet.http.HttpServlet {
 
         if(method.equals("GET")){
             if(action.equals("showAll")){
-                List<AutoShop> autoShops = service.findAllAutoShops();
-                request.setAttribute("autoShops", autoShops);
-                url = "";
+//                List<AutoShop> autoShops = service.findAllAutoShops();
+//                request.setAttribute("autoShops", autoShops);
+//                url = "";
             }
         }
 
