@@ -13,5 +13,33 @@
             <result name="success">my_profile_screen.jsp</result>
             <result name="input">index.jsp</result>
         </action>
+        <action name="registerUser" class="pe.com.webintegrado.actions.RegisterAction">
+            <result name="success">index.jsp</result>
+            <result name="input">register_screen.jsp</result>
+        </action>
+        <action name="getUserInfo" class="pe.com.webintegrado.actions.GetUserInfoAction">
+            <result name="success">my_profile_screen.jsp</result>
+            <result name="input">my_profile_screen.jsp</result>
+        </action>
+        <action name="getAutoShopsByType" class="pe.com.webintegrado.actions.GetAutoShopsByTypeAction">
+            <result name="success">auto_shops_screen.jsp</result>
+            <result name="input">failed_request_screen.jsp</result>
+        </action>
+        <action name="myVehicules" class="pe.com.webintegrado.actions.GetVehiculesByUserIdAction">
+            <result name="success">my_vehicules_screen.jsp</result>
+            <result name="input">failed_request_screen.jsp</result>
+        </action>
+        <action name="createAppointment" class="pe.com.webintegrado.actions.CreateAppointmentAction">
+            <result name="success">create_appointment_screen.jsp</result>
+            <result name="input">create_appointment_screen.jsp</result>
+        </action>
+        <action name="getAppointmentsByUser" class="pe.com.webintegrado.actions.GetAppointmentsByUserIdAction">
+            <result name="success">list_appointments_screen.jsp</result>
+            <result name="input">failed_request_screen.jsp</result>
+        </action>
+        <action name="getAutoShopDetail" class="pe.com.webintegrado.actions.GetAutoShopInfoAction">
+            <result name="success">auto_shop_detail_screen.jsp</result>
+            <result name="input">failed_request_screen.jsp</result>
+        </action>
     </package>
 </struts>

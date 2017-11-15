@@ -2,9 +2,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Register</title>
 </head>
 <body>
-    <h2>register</h2>
+<s:form action="registerUser" theme="bootstrap" cssClass="well form-vertical">
+    <s:textfield
+            label="First Name"
+            name="firstName"/>
+
+    <s:textfield
+            label="Last Name"
+            name="lastName"/>
+
+    <s:textfield
+            label="Email"
+            name="email"/>
+
+    <s:textfield
+            label="Phone"
+            name="phone"/>
+
+    <s:submit value="Register" cssClass="btn btn-primary"/>
+    <a href="index.jsp">
+        <s:submit value="Cancel" cssClass="btn btn-danger"  />
+    </a>
+</s:form>
 </body>
 </html>
