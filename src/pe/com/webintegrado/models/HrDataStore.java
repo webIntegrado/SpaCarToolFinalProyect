@@ -92,13 +92,13 @@ public class HrDataStore {
      * @param email
      * @return id from logged user
      */
-    public int loginUser(String email){
-        if(connection == null) return 0;
-        int userId = getUsersEntity().findByEmail(email).getId();
-        if (userId != 0){
-            return userId;
+    public User loginUser(String email){
+        if(connection == null) return null;
+        User user = getUsersEntity().findByEmail(email);
+        if (user != null){
+            return user;
         }else {
-            return 0;
+            return null;
         }
     }
 

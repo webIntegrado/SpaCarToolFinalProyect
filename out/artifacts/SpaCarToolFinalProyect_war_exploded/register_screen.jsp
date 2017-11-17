@@ -22,6 +22,10 @@
             label="Phone"
             name="phone"/>
 
+    <s:textfield
+            label="Address"
+            name="address"/>
+
     <s:submit value="Register" cssClass="btn btn-primary"/>
     <a href="index.jsp">
         <s:submit value="Cancel" cssClass="btn btn-danger"  />

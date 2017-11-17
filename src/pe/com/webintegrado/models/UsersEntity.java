@@ -60,7 +60,7 @@ public class UsersEntity extends BaseEntity {
 
     public User create(User user){
         return executeUpdate(String.format(
-                "INSERT INTO %s(id, first_name, last_name, telefono, address, email) " +
+                "INSERT INTO %s(id, first_name, last_name, phone, address, email) " +
                         "VALUES(%d, '%s', '%s', %d, '%s', '%s')",
                 getTableName(),
                 user.getId(),

@@ -1,12 +1,22 @@
 package pe.com.webintegrado.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import pe.com.webintegrado.models.HrService;
 
 public class RegisterAction extends ActionSupport {
+    private HrService service = new HrService();
 
     public String execute() throws Exception{
-        //TODO: do something
-        return SUCCESS;
+        if(service.registerUser(
+                getFirstName(),
+                getLastName(),
+                getPhone(),
+                getAddress(),
+                getEmail())){
+            return SUCCESS;
+        }else {
+            return INPUT;
+        }
     }
 
     private String firstName;

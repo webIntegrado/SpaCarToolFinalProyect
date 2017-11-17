@@ -10,11 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 public class HrService {
-    private String url = "jdbc:mysql://localhost:3306/";
-    private String dbName = "spa_car_tool";
-    private String driverClassName = "com.mysql.jdbc.Driver";
-    private String userName = "root";
-    private String password = "123456";
 
     private Connection connection;
     private HrDataStore dataStore;
@@ -24,7 +19,7 @@ public class HrService {
             InitialContext context = new InitialContext();
             dataStore = new HrDataStore();
             connection = ((DataSource)context
-                    .lookup("jdbc/spa_car_tool"))
+                    .lookup("jdbc/SpaCarTool"))
                     .getConnection();
             dataStore.setConnection(connection);
         }catch (NamingException e) {
@@ -33,17 +28,6 @@ public class HrService {
             e.printStackTrace();
         }
 
-
-//        try {
-//            Class.forName(driverClassName);
-//            dataStore = new HrDataStore();
-//            connection = DriverManager.getConnection(
-//                    url+dbName,userName,password
-//            );
-//            dataStore.setConnection(connection);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
     }
 
     public Connection getConnection() {
@@ -66,7 +50,7 @@ public class HrService {
         return dataStore.findUserById(userId);
     }
 
-    public int loginUser (String email){
+    public User loginUser (String email){
         return dataStore.loginUser(email);
     }
 
