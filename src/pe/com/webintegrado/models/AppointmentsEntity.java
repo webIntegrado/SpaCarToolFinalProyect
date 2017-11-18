@@ -86,8 +86,8 @@ public class AppointmentsEntity extends BaseEntity {
                           int autoShopId,
                           int userId){
         return executeUpdate(String.format(
-                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', "+dateCreated+", "+dateDelivery+", %d, %d)",
-                getTableName(), id, description, autoShopId,userId));
+                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', NOW(), NOW(), %d, %d)",
+                getTableName(), 0, description, autoShopId,userId));
 
     }
 

@@ -1,13 +1,31 @@
 package pe.com.webintegrado.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import pe.com.webintegrado.models.HrService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class CreateAppointmentAction extends ActionSupport {
+    private HrService service = new HrService();
     public String execute() throws Exception{
-        //TODO: do something
-        return SUCCESS;
+        if(service.createAppointment(getId()
+                ,getDescription(),
+                getCurrentDate(),
+                getCurrentDate(),
+                getUserId(),
+                getAutoShopId())) {
+            return SUCCESS;
+        }else {
+            return INPUT;
+        }
+    }
+
+    private Date getCurrentDate(){
+        java.util.Date date = new Date();
+        return new java.sql.Timestamp(date.getTime());
     }
 
     private int id;

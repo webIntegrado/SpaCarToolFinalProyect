@@ -30,7 +30,7 @@
             <result name="input">failed_request_screen.jsp</result>
         </action>
         <action name="createAppointment" class="pe.com.webintegrado.actions.CreateAppointmentAction">
-            <result name="success">create_appointment_screen.jsp</result>
+            <result name="success">my_profile_screen.jsp</result>
             <result name="input">create_appointment_screen.jsp</result>
         </action>
         <action name="getAppointmentsByUser" class="pe.com.webintegrado.actions.GetAppointmentsByUserIdAction">
@@ -40,6 +40,9 @@
         <action name="getAutoShopDetail" class="pe.com.webintegrado.actions.GetAutoShopInfoAction">
             <result name="success">auto_shop_detail_screen.jsp</result>
             <result name="input">failed_request_screen.jsp</result>
+        </action>
+        <action name="goToCreateAppointment" class="pe.com.webintegrado.actions.GoToCreateAppointmentAction">
+            <result name="success">create_appointment_screen.jsp</result>
         </action>
     </package>
 </struts>
