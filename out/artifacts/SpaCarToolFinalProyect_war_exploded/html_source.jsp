@@ -38,9 +38,9 @@
             Talleres Concesionario
         </sj:a>
         <%--<s:a action="getAutoShopsByType" class="w3-bar-item w3-button">--%>
-            <%--<s:param name="type">concesionario</s:param>--%>
-            <%--<s:param name="userId"><s:property value="userId"/></s:param>--%>
-            <%--Talleres Concesionario--%>
+        <%--<s:param name="type">concesionario</s:param>--%>
+        <%--<s:param name="userId"><s:property value="userId"/></s:param>--%>
+        <%--Talleres Concesionario--%>
         <%--</s:a>--%>
         <s:a action="getAutoShopsByType" class="w3-bar-item w3-button">
             <s:param name="type">particular</s:param>

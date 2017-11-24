@@ -25,7 +25,7 @@ public class CreateAppointmentAction extends ActionSupport {
 
     private Date getCurrentDate(){
         java.util.Date date = new Date();
-        return new java.sql.Timestamp(date.getTime());
+        return new java.sql.Date(date.getTime());
     }
 
     private int id;

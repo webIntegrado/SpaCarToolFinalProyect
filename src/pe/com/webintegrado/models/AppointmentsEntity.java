@@ -1,8 +1,10 @@
 package pe.com.webintegrado.models;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -85,9 +87,15 @@ public class AppointmentsEntity extends BaseEntity {
                           Date dateDelivery,
                           int autoShopId,
                           int userId){
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+
+        String dateCreatedString = simpleDateFormat.format(dateCreated);
+        String dateDeliveredString = simpleDateFormat.format(dateDelivery);
+
         return executeUpdate(String.format(
-                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', NOW(), NOW(), %d, %d)",
-                getTableName(), 0, description, autoShopId,userId));
+                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', '%s', '%s', %d, %d)",
+                getTableName(), 0, description,dateCreatedString,dateDeliveredString, autoShopId,userId));
 
     }
 
