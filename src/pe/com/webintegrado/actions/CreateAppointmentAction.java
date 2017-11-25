@@ -1,6 +1,7 @@
 package pe.com.webintegrado.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.javafx.util.Logging;
 import pe.com.webintegrado.models.HrService;
 
 import java.text.DateFormat;
@@ -26,6 +27,7 @@ public class CreateAppointmentAction extends ActionSupport {
     private Date getCurrentDate(){
         java.util.Date date = new Date();
         return new java.sql.Date(date.getTime());
+
     }
 
     private int id;

@@ -88,14 +88,14 @@ public class AppointmentsEntity extends BaseEntity {
                           int autoShopId,
                           int userId){
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
-
-        String dateCreatedString = simpleDateFormat.format(dateCreated);
-        String dateDeliveredString = simpleDateFormat.format(dateDelivery);
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+//
+//        String dateCreatedString = simpleDateFormat.format(dateCreated);
+//        String dateDeliveredString = simpleDateFormat.format(dateDelivery);
 
         return executeUpdate(String.format(
-                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', '%s', '%s', %d, %d)",
-                getTableName(), 0, description,dateCreatedString,dateDeliveredString, autoShopId,userId));
+                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', "+dateCreated+", "+dateDelivery+", %d, %d)",
+                getTableName(), 0, description, autoShopId,userId));
 
     }
 

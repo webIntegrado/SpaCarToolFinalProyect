@@ -25,16 +25,22 @@
     </div>
     <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
         <a href="my_profile_screen.jsp" class="w3-bar-item w3-button">Mi Perfil</a>
-        <s:a action="myVehicules" class="w3-bar-item w3-button">
+        <s:url var="ajaxTest3" value="/myVehicules.action">
             <s:param name="userId"><s:property value="userId"/></s:param>
+        </s:url>
+        <sj:a id="link1" href="%{ajaxTest3}" targets="div1" class="w3-bar-item w3-button">
             Mis Vehiculos
-        </s:a>
+        </sj:a>
+        <%--<s:a action="myVehicules" class="w3-bar-item w3-button">--%>
+            <%--<s:param name="userId"><s:property value="userId"/></s:param>--%>
+            <%--Mis Vehiculos--%>
+        <%--</s:a>--%>
         <!--Types: concesionario || particular-->
         <s:url var="ajaxTest" value="/getAutoShopsByType.action">
             <s:param name="type">concesionario</s:param>
             <s:param name="userId"><s:property value="userId"/></s:param>
         </s:url>
-        <sj:a id="link1" href="%{ajaxTest}" targets="div1" class="w3-bar-item w3-button">
+        <sj:a id="link2" href="%{ajaxTest}" targets="div1" class="w3-bar-item w3-button">
             Talleres Concesionario
         </sj:a>
         <%--<s:a action="getAutoShopsByType" class="w3-bar-item w3-button">--%>
@@ -42,11 +48,18 @@
             <%--<s:param name="userId"><s:property value="userId"/></s:param>--%>
             <%--Talleres Concesionario--%>
         <%--</s:a>--%>
-        <s:a action="getAutoShopsByType" class="w3-bar-item w3-button">
+        <s:url var="ajaxTest2" value="/getAutoShopsByType.action">
             <s:param name="type">particular</s:param>
             <s:param name="userId"><s:property value="userId"/></s:param>
+        </s:url>
+        <sj:a id="link3" href="%{ajaxTest2}" targets="div1" class="w3-bar-item w3-button">
             Talleres Particulares
-        </s:a>
+        </sj:a>
+        <%--<s:a action="getAutoShopsByType" class="w3-bar-item w3-button">--%>
+            <%--<s:param name="type">particular</s:param>--%>
+            <%--<s:param name="userId"><s:property value="userId"/></s:param>--%>
+            <%--Talleres Particulares--%>
+        <%--</s:a>--%>
     </div>
     <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
