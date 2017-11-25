@@ -8,15 +8,15 @@ public class Appointment {
 
     private int id;
     private String description;
-    private Date dateCreated;
-    private Date dateDelivery;
+    private java.sql.Date dateCreated;
+    private java.sql.Date dateDelivery;
     private User user;
     private AutoShop autoShop;
 
     public Appointment() {
     }
 
-    public Appointment(int id, String description, Date dateCreated, Date dateDelivery, User user, AutoShop autoShop) {
+    public Appointment(int id, String description, java.sql.Date dateCreated, java.sql.Date dateDelivery, User user, AutoShop autoShop) {
         this.id = id;
         this.description = description;
         this.dateCreated = dateCreated;
@@ -43,20 +43,20 @@ public class Appointment {
         return this;
     }
 
-    public Date getDateCreated() {
+    public java.sql.Date getDateCreated() {
         return dateCreated;
     }
 
-    public Appointment setDateCreated(Date dateCreated) {
+    public Appointment setDateCreated(java.sql.Date dateCreated) {
         this.dateCreated = dateCreated;
         return this;
     }
 
-    public Date getDateDelivery() {
+    public java.sql.Date getDateDelivery() {
         return dateDelivery;
     }
 
-    public Appointment setDateDelivery(Date dateDelivery) {
+    public Appointment setDateDelivery(java.sql.Date dateDelivery) {
         this.dateDelivery = dateDelivery;
         return this;
     }

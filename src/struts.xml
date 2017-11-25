@@ -44,5 +44,8 @@
         <action name="goToCreateAppointment" class="pe.com.webintegrado.actions.GoToCreateAppointmentAction">
             <result name="success">create_appointment_screen.jsp</result>
         </action>
+        <action name="showUserDetail" class="pe.com.webintegrado.actions.ShowUserDetails">
+            <result name="success">my_profile_screen.jsp</result>
+        </action>
     </package>
 </struts>

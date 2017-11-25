@@ -148,8 +148,8 @@ public class HrDataStore {
      */
     public boolean createAppointment(int id,
                                      String description,
-                                     Date dateCreated,
-                                     Date datedelivery,
+                                     java.sql.Date dateCreated,
+                                     java.sql.Date datedelivery,
                                      int userId,
                                      int autoShopId) {
         return connection != null && getAppointmentsEntity().create(id, description, dateCreated, datedelivery, autoShopId, userId);

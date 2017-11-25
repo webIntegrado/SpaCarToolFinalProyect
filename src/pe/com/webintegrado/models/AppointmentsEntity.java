@@ -68,8 +68,8 @@ public class AppointmentsEntity extends BaseEntity {
 
     public boolean create(int id,
                           String description,
-                          Date dateCreated,
-                          Date dateDelivery,
+                          java.sql.Date dateCreated,
+                          java.sql.Date dateDelivery,
                           AutoShop autoShop,
                           User user) {
         return create(new Appointment(
@@ -83,8 +83,8 @@ public class AppointmentsEntity extends BaseEntity {
 
     public boolean create(int id,
                           String description,
-                          Date dateCreated,
-                          Date dateDelivery,
+                          java.sql.Date dateCreated,
+                          java.sql.Date dateDelivery,
                           int autoShopId,
                           int userId){
 
@@ -93,9 +93,11 @@ public class AppointmentsEntity extends BaseEntity {
 //        String dateCreatedString = simpleDateFormat.format(dateCreated);
 //        String dateDeliveredString = simpleDateFormat.format(dateDelivery);
 
-        return executeUpdate(String.format(
-                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', "+dateCreated+", "+dateDelivery+", %d, %d)",
-                getTableName(), 0, description, autoShopId,userId));
+//        return executeUpdate(String.format(
+//                "INSERT INTO %s(id, description, date_created, date_delivery, auto_shop_id, user_id) VALUES(%d, '%s', "+dateCreated+", "+dateDelivery+", %d, %d)",
+//                getTableName(), 0, description, autoShopId,3));
+
+        return excuteUpdateV2(id,description,dateCreated,dateDelivery,autoShopId,userId);
 
     }
 

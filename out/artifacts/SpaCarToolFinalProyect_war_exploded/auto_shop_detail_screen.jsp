@@ -23,6 +23,9 @@
     </style>
 </head>
 <body>
+<div id="div1"  class="w3-main" style="margin-left:250px">
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:83px"></div>
     <div class="w3-col s4 w3-justify">
         <h4><s:property value="name"/></h4>
         <p>Tipo: <s:property value="type"/></p>
@@ -34,5 +37,6 @@
         <button class="w3-button w3-block w3-black">Create Appointment</button>
     </s:a>
     </div>
+</div>
 </body>
 </html>

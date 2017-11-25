@@ -76,8 +76,8 @@ public class HrService {
 
     public boolean createAppointment(int id,
                                      String description,
-                                     Date dateCreated,
-                                     Date datedelivery,
+                                     java.sql.Date dateCreated,
+                                     java.sql.Date datedelivery,
                                      int userId,
                                      int autoShopId){
         return dataStore.createAppointment(id,description,dateCreated,datedelivery,userId,autoShopId);

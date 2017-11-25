@@ -17,6 +17,8 @@
     </style>
 </head>
 <body>
+<!-- Push down content on small screens -->
+<div class="w3-hide-large" style="margin-top:83px"></div>
     <div class="w3-container w3-text-grey" id="jeans">
         <p>Mis Vehiculos</p>
     </div>
