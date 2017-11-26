@@ -29,7 +29,7 @@ public class VehiculesEntity extends BaseEntity {
                     .executeQuery(
                             getBaseStatement()
                                     .concat(criteria));
-            List<Vehicule> vehicules = new ArrayList<>();
+            List<Vehicule> vehicules = new ArrayList<Vehicule>();
             while(rs.next())
                 vehicules.add(Vehicule.from(rs,usersEntity));
 

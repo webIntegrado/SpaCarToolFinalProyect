@@ -46,7 +46,7 @@ public class UsersEntity extends BaseEntity {
                     .executeQuery(
                             getBaseStatement()
                                     .concat(criteria));
-            List<User> users = new ArrayList<>();
+            List<User> users = new ArrayList<User>();
             while(rs.next())
                 users.add(User.from(rs));
 

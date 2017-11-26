@@ -43,7 +43,7 @@ public class AppointmentsEntity extends BaseEntity {
                     .executeQuery(
                             getBaseStatement()
                                     .concat(criteria));
-            List<Appointment> appointments = new ArrayList<>();
+            List<Appointment> appointments = new ArrayList<Appointment>();
             while(rs.next())
                 appointments.add(Appointment.from(rs, usersEntity,autoShopsEntity));
 

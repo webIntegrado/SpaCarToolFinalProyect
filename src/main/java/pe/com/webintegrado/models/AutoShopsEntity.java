@@ -29,7 +29,7 @@ public class AutoShopsEntity extends BaseEntity {
                     .executeQuery(
                             getBaseStatement()
                                     .concat(criteria));
-            List<AutoShop> autoShops = new ArrayList<>();
+            List<AutoShop> autoShops = new ArrayList<AutoShop>();
             while(rs.next())
                 autoShops.add(AutoShop.from(rs));
 
